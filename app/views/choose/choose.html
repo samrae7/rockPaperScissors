@@ -1,0 +1,11 @@
+<p>This is the partial for view 1.</p>
+<p>No seriously2.</p>
+<label ng-repeat="(key, value) in vm.weapons">
+  {{key}}
+  <input
+    type="radio"
+    ng-model="vm.selected"
+    ng-change="vm.onChange(key)"
+    ng-value="key"
+  >
+</label>
