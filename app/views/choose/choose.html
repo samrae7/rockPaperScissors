@@ -1,11 +1,20 @@
 <p>This is the partial for view 1.</p>
-<p>No seriously2.</p>
-<label ng-repeat="(key, value) in vm.weapons">
-  {{key}}
-  <input
-    type="radio"
-    ng-model="vm.selected"
-    ng-change="vm.onChange(key)"
-    ng-value="key"
+
+<div class="choose-view__choices-container">
+
+
+  <label
+    ng-repeat="(key, value) in vm.weapons"
+    class="choose-view__choice-label"
   >
-</label>
+    {{key}}
+    <input
+      type="radio"
+      class="choose-view__choice-input"
+      ng-model="vm.selected"
+      ng-change="vm.onChange(key)"
+      ng-value="key"
+    >
+    <i class="fa fa-5x" ng-class="vm.icon(key)" aria-hidden="true"></i>
+  </label>
+</div>

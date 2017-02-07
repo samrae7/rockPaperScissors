@@ -17,5 +17,8 @@ function ChooseController($location, WEAPONS) {
   vm.onChange = function(weapon) {
     $location.path('/results/' + weapon);
   };
+  vm.icon = function(weapon) {
+    return WEAPONS[weapon].icon;
+  };
   vm.weapons = WEAPONS;
 }

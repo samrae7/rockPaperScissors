@@ -6,7 +6,6 @@ angular
   'ngRoute',
   'myApp.choose',
   'resultsView',
-  'myApp.version',
   'myApp.gameState',
     'constants'
   ])
