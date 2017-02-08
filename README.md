@@ -1,3 +1,6 @@
+### Rock paper Scissors App
+A simple game using Angular 1.5. Unit tests written with Jasmine and run with Karma.
+
 ### Install Dependencies
 
 Run:
@@ -14,11 +17,11 @@ Run:
 gulp
 ```
 
-This should serve the app on your local machine and open it in a browser tab
+This should build the site files to the dist folder and serve from there on your local machine.
 
 ### Running Unit Tests
 
-These are written in [Jasmine][jasmine], which we run with the [Karma][karma] test runner.
+Unit tests are written in [Jasmine][jasmine], which we run with the [Karma][karma] test runner.
 We provide a Karma configuration file to run them.
 
 * The configuration is found at `karma.conf.js`.
@@ -43,23 +46,4 @@ predefined script to do this:
 
 ```
 npm run test-single-run
-```
-
-
-## Loading Angular Asynchronously
-
-The `angular-seed` project supports loading the framework and application scripts asynchronously.
-The special `index-async.html` is designed to support this style of loading. For it to work you must
-inject a piece of Angular JavaScript into the HTML page. The project has a predefined script to help
-do this:
-
-```
-npm run update-index-async
-```
-
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html`
-page. You can run this every time you update the version of Angular that you are using.
-
-
-
 ```
