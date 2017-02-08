@@ -1,5 +1,5 @@
 ### Rock, Paper, Scissors
-A simple game using Angular 1.5.
+A simple game built with Angular 1.5.
 
 Unit tests written with Jasmine and run with Karma.
 
