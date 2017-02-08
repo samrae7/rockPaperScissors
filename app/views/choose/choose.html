@@ -11,6 +11,10 @@
       ng-change="vm.onChange(key)"
       ng-value="key"
     >
-    <i class="fa fa-4x" ng-class="vm.icon(key)" aria-hidden="true"></i>
+    <div ng-switch="key">
+      <i class="fa fa-4x fa-hand-rock-o" ng-switch-when="rock" aria-hidden="true"></i>
+      <i class="fa fa-4x fa-hand-scissors-o" ng-switch-when="scissors" aria-hidden="true"></i>
+      <i class="fa fa-4x fa-hand-paper-o" ng-switch-when="paper" aria-hidden="true"></i>
+    </div>
   </label>
 </div>

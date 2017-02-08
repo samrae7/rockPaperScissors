@@ -1,18 +1,14 @@
 'use strict';
 
-function ChooseController($location, WEAPONS) {
+function ChooseController($location, weapons) {
   var vm = this;
-  vm.selected = '';
   vm.onChange = function(weapon) {
     $location.path('/results/' + weapon);
   };
-  vm.icon = function(weapon) {
-    return WEAPONS[weapon].icon;
-  };
-  vm.weapons = WEAPONS;
+  vm.weapons = weapons;
 }
 
-angular.module('myApp.choose', ['ngRoute', 'constants'])
+angular.module('choose', ['ngRoute'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/choose', {
       templateUrl: '/views/choose/choose.html',
@@ -20,4 +16,4 @@ angular.module('myApp.choose', ['ngRoute', 'constants'])
       controllerAs: 'vm'
     });
   }])
-  .controller('ChooseController', ['$location', 'WEAPONS', ChooseController]);
+  .controller('ChooseController', ['$location', 'weapons', ChooseController]);

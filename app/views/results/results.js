@@ -2,8 +2,9 @@
 
 angular.module('resultsView', [
   'ngRoute',
-  'myApp.computerPlayer',
-  'gameLogicService'
+  'computerPlayerService',
+  'gameLogicService',
+  'timerService'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -15,10 +16,10 @@ angular.module('resultsView', [
 }])
 
 .controller('ResultController', [
-  'ComputerPlayerService',
+  'computerPlayerService',
   'gameLogicService',
   '$routeParams',
-  '$interval',
+  'timerService',
   ResultController
 ]);
 
@@ -26,23 +27,23 @@ function ResultController(
   computerPlayerService,
   gameLogicService,
   $routeParams,
-  $interval
+  timerService
 ) {
 
   var vm = this;
+  var countTotal = 3;
   vm.playerChoice = $routeParams.playerChoice;
   vm.computerChoice = computerPlayerService.computerChoice();
   vm.result = gameLogicService.result(vm.playerChoice, vm.computerChoice);
-  vm.count = 3;
+  vm.count = countTotal;
   vm.showResult = false;
 
-  function timer() {
-    return $interval(function(i) {
-      vm.count = 3-i;
-    }, 1000, 3);
-  }
+  var callback = function(i) {
+    vm.count = countTotal - i;
+  };
 
-  timer().then(function() {
+  timerService.timer(callback, countTotal)
+    .then(function() {
       vm.showResult = true;
       gameLogicService.updateScore(vm.playerChoice, vm.computerChoice);
     });

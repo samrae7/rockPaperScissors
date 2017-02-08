@@ -1,10 +1,10 @@
 'use strict';
-angular.module('gameLogicService', ['constants', 'scoreService'])
-  .service('gameLogicService', function(WEAPONS, scoreService) {
+angular.module('gameLogicService', [ 'myApp', 'scoreService'])
+  .service('gameLogicService', function(weapons, scoreService) {
     var service = this;
 
     function playerWins(playerChoice, computerChoice) {
-      return WEAPONS[playerChoice] && WEAPONS[playerChoice].beats[computerChoice];
+      return weapons[playerChoice] && weapons[playerChoice].beats[computerChoice];
     }
 
     service.updateScore = function(playerChoice, computerChoice) {

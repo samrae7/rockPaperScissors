@@ -1,6 +1,6 @@
 'use strict';
-angular.module('myApp.computerPlayer', [])
-  .service('ComputerPlayerService', function() {
+angular.module('computerPlayerService', [])
+  .service('computerPlayerService', function() {
     var choices = ['rock', 'paper', 'scissors'];
     this.computerChoice = function() {
       var randomDecimal = (Math.random() * choices.length);
