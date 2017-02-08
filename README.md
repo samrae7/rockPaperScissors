@@ -1,5 +1,7 @@
-### Rock paper Scissors App
-A simple game using Angular 1.5. Unit tests written with Jasmine and run with Karma.
+### Rock, Paper, Scissors
+A simple game using Angular 1.5.
+
+Unit tests written with Jasmine and run with Karma.
 
 ### Install Dependencies
 
@@ -21,12 +23,11 @@ This should build the site files to the dist folder and serve from there on your
 
 ### Running Unit Tests
 
-Unit tests are written in [Jasmine][jasmine], which we run with the [Karma][karma] test runner.
-We provide a Karma configuration file to run them.
+Unit tests are written in Jasmine and run with Karma.
 
 * The configuration is found at `karma.conf.js`.
 * The unit tests are found next to the code they are testing and have an `.test.js` suffix (e.g.
-  `view1_test.js`).
+  `view1.test.js`).
 
 The easiest way to run the unit tests is to use the supplied npm script:
 
