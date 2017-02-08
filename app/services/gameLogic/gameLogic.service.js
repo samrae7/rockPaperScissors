@@ -1,18 +1,29 @@
 'use strict';
-angular.module('gameLogicService', ['constants'])
-  .service('gameLogicService', function(WEAPONS) {
+angular.module('gameLogicService', ['constants', 'scoreService'])
+  .service('gameLogicService', function(WEAPONS, scoreService) {
     var service = this;
+
     function playerWins(playerChoice, computerChoice) {
-      // console.log('weapons', WEAPONS[playerChoice]);
-      return WEAPONS[playerChoice] && !!WEAPONS[playerChoice].beats[computerChoice];
+      return WEAPONS[playerChoice] && WEAPONS[playerChoice].beats[computerChoice];
     }
+
+    service.updateScore = function(playerChoice, computerChoice) {
+      if (playerChoice === computerChoice) {
+        return;
+      } else if (playerWins(playerChoice, computerChoice)) {
+        scoreService.incrementPlayer();
+      } else {
+        scoreService.incrementComputer();
+      }
+    };
+
     service.result = function(playerChoice, computerChoice) {
       if (playerChoice === computerChoice) {
-        return 'It\'s a tie'
+        return 'It\'s a tie!';
       } else if (playerWins(playerChoice, computerChoice)){
-        return 'You win!'
+        return 'You win!';
       } else {
-        return 'You lose!'
+        return 'You lose!';
       }
-    }
+    };
   });

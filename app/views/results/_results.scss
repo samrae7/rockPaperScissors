@@ -1,3 +1,47 @@
 .results-page {
-  background-color: orange;
+
+  $play-again-link-width: 12rem;
+
+  &__choices-container {
+    @include choices-container();
+  }
+
+  &__choice-container {
+    @include choice-container();
+
+    &--centred {
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  &__player-choice {
+    margin-top: 0;
+  }
+
+  &__computer-choice {
+    margin-bottom: 0;
+  }
+
+  &__large-text {
+    font-size: $font-huge;
+    margin: 0;
+  }
+
+  &__result-text {
+    margin: 1rem;
+  }
+
+  &__play-again-link {
+    text-decoration: none;
+    background-color: $contrast-colour;
+    color: white;
+    border-radius: 5px;
+    width: $play-again-link-width;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-size: $font-large;
+    padding: 1rem;
+  }
 }

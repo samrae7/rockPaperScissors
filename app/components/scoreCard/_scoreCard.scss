@@ -1,0 +1,10 @@
+score-card {
+  display: flex;
+  font-size: $font-large;
+  justify-content: space-around;
+
+  p {
+    margin: 0;
+    padding: 1rem;
+  }
+}

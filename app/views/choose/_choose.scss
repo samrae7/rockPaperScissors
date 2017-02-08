@@ -1,0 +1,13 @@
+.choose-view {
+  &__choices-container{
+    @include choices-container();
+  }
+
+  &__choice-input {
+    display: none;
+  }
+
+  &__choice-label {
+    @include choice-container();
+  }
+}

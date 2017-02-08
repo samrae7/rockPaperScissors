@@ -1,16 +1,51 @@
-<section class="results-page">
-  <p>This is the partial for the results view.</p>
-  <p>
-  </p>
-  <div>
-    <div>
-      {{vm.playerChoice}}
+<section ng-cloak class="results-page">
+
+  <div class="results-page__choices-container">
+    <div ng-switch="vm.playerChoice" class="results-page__choice-container">
+      <p>You chose {{::vm.playerChoice}}</p>
+      <i class="fa fa-4x fa-hand-rock-o" ng-switch-when="rock" aria-hidden="true"></i>
+      <i class="fa fa-4x fa-hand-scissors-o" ng-switch-when="scissors" aria-hidden="true"></i>
+      <i class="fa fa-4x fa-hand-paper-o" ng-switch-when="paper" aria-hidden="true"></i>
     </div>
-    <div>
-      {{vm.result}}
+    <div
+      class="results-page__choice-container results-page__choice-container--centred"
+      ng-switch="vm.showResult"
+    >
+      <p
+        ng-switch-when="false"
+        class="results-page__large-text"
+      >
+        {{vm.count}}
+      </p>
+      <p
+        ng-switch-when="true"
+        class="results-page__result-text"
+      >
+        {{::vm.result}}
+      </p>
+      <a
+        class="results-page__play-again-link"
+        ng-switch-when="true"
+        href="/choose"
+      >
+        Play again
+      </a>
     </div>
-    <div>
-      {{vm.computerChoice}}
+    <div
+      class="results-page__choice-container"
+      ng-if="vm.showResult"
+      ng-switch="vm.computerChoice"
+    >
+      <p>Computer chose {{::vm.computerChoice}}</p>
+      <i class="fa fa-4x fa-hand-rock-o" ng-switch-when="rock" aria-hidden="true"></i>
+      <i class="fa fa-4x fa-hand-scissors-o" ng-switch-when="scissors" aria-hidden="true"></i>
+      <i class="fa fa-4x fa-hand-paper-o" ng-switch-when="paper" aria-hidden="true"></i>
+    </div>
+    <div
+      class="results-page__choice-container results-page__choice-container--centred"
+      ng-if="!vm.showResult"
+    >
+      <p class="results-page__large-text">?</p>
     </div>
   </div>
 </section>

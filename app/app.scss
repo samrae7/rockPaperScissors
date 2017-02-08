@@ -1,6 +1,27 @@
+@import 'shared_styles/resets';
+@import 'shared_styles/colours';
+@import 'shared_styles/typography';
+@import 'shared_styles/mixins';
 @import 'views/results/results';
-@import 'views/choose/choices';
+@import 'views/choose/choose';
+@import 'components/scoreCard/scoreCard';
+
+html, body {
+  height: 100%
+}
+
+html {
+  font-size: 62.5%;
+}
 
 body {
   font-family: 'PT Sans', sans-serif;
+  max-width: 42rem;
+  margin: 0 auto;
+  color: $contrast-colour;
+}
+
+.app-wrapper {
+  background-color: $app-background-colour;
+  height: 100%;
 }

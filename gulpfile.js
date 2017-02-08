@@ -19,13 +19,14 @@ gulp.task('serve', function() {
   gulp.watch('dist').on('change', browserSync.reload);
 });
 
+var htmlFiles = ['app/**/*.html', '!app/bower_components/**/*'];
 
 gulp.task('clean', function(){
   return del('dist');
 });
 
 gulp.task('html', function(){
-  return gulp.src('app/**/*.html')
+  return gulp.src(htmlFiles)
     .pipe(gulp.dest('dist'))
 });
 
@@ -48,7 +49,7 @@ gulp.task('watch:sass', function () {
 });
 
 gulp.task('watch:html', function () {
-  return gulp.watch('app/**/*.html', gulp.series('html'));
+  return gulp.watch(htmlFiles, gulp.series('html'));
 });
 
 gulp.task('watch:js', function () {
