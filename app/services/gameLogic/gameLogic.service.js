@@ -7,22 +7,14 @@ angular.module('gameLogicService', [ 'myApp', 'scoreService'])
       return weapons[playerChoice] && weapons[playerChoice].beats[computerChoice];
     }
 
-    service.updateScore = function(playerChoice, computerChoice) {
-      if (playerChoice === computerChoice) {
-        return;
-      } else if (playerWins(playerChoice, computerChoice)) {
-        scoreService.incrementPlayer();
-      } else {
-        scoreService.incrementComputer();
-      }
-    };
-
-    service.result = function(playerChoice, computerChoice) {
+    service.getResultAndUpdateScore = function(playerChoice, computerChoice) {
       if (playerChoice === computerChoice) {
         return 'It\'s a tie!';
       } else if (playerWins(playerChoice, computerChoice)){
+        scoreService.incrementPlayer();
         return 'You win!';
       } else {
+        scoreService.incrementComputer();
         return 'You lose!';
       }
     };

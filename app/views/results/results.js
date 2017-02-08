@@ -10,20 +10,20 @@ angular.module('resultsView', [
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/results/:playerChoice', {
     templateUrl: 'views/results/results.html',
-    controller: 'ResultController',
+    controller: 'ResultsController',
     controllerAs: 'vm'
   });
 }])
 
-.controller('ResultController', [
+.controller('ResultsController', [
   'computerPlayerService',
   'gameLogicService',
   '$routeParams',
   'timerService',
-  ResultController
+  ResultsController
 ]);
 
-function ResultController(
+function ResultsController(
   computerPlayerService,
   gameLogicService,
   $routeParams,
@@ -34,7 +34,6 @@ function ResultController(
   var countTotal = 3;
   vm.playerChoice = $routeParams.playerChoice;
   vm.computerChoice = computerPlayerService.computerChoice();
-  vm.result = gameLogicService.result(vm.playerChoice, vm.computerChoice);
   vm.count = countTotal;
   vm.showResult = false;
 
@@ -44,7 +43,7 @@ function ResultController(
 
   timerService.timer(callback, countTotal)
     .then(function() {
+      vm.result = gameLogicService.getResultAndUpdateScore(vm.playerChoice, vm.computerChoice);
       vm.showResult = true;
-      gameLogicService.updateScore(vm.playerChoice, vm.computerChoice);
     });
 }

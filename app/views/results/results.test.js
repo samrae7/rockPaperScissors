@@ -39,8 +39,7 @@ describe('resultsView module', function() {
       computerChoice: function() {}
     };
     gameLogicService = {
-      result: function (playerChoice, computerChoice) {},
-      updateScore: function () {}
+      getResultAndUpdateScore: function (playerChoice, computerChoice) {}
     };
     $routeParams = {
       playerChoice: ''
@@ -54,19 +53,18 @@ describe('resultsView module', function() {
       var vm;
       var timer;
       var computerPlayerServiceComputerChoice;
-      var gameLogicServiceResult;
-      var gameLogicServiceUpdateScore;
+      var gameLogicServiceGetResultAndUpdateScore;
       var mockPlayerChoice = 'foo';
       var mockComputerChoice = 'bar';
+      var mockResultValue = 'The result is FooBar';
 
       beforeEach(function() {
         timer = spyOn(timerService, 'timer').and.callThrough();
         computerPlayerServiceComputerChoice = spyOn(computerPlayerService, 'computerChoice').and.returnValue(mockComputerChoice);
-        gameLogicServiceResult = spyOn(gameLogicService, 'result');
-        gameLogicServiceUpdateScore = spyOn(gameLogicService, 'updateScore');
+        gameLogicServiceGetResultAndUpdateScore = spyOn(gameLogicService, 'getResultAndUpdateScore').and.returnValue(mockResultValue);
         $routeParams.playerChoice = mockPlayerChoice;
 
-        vm = $controller('ResultController', {
+        vm = $controller('ResultsController', {
           computerPlayerService: computerPlayerService,
           gameLogicService: gameLogicService,
           $routeParams: $routeParams,
@@ -80,22 +78,21 @@ describe('resultsView module', function() {
         expect(timer).toHaveBeenCalled();
       });
 
-      it('should set computerChoice using computePlayerService.result', function() {
+      it('should set computerChoice using computerPlayerService.result', function() {
         expect(computerPlayerServiceComputerChoice).toHaveBeenCalled();
         expect(vm.computerChoice).toEqual(mockComputerChoice);
       });
-
-      it('should call gameLogicService.result with correct args', function() {
-        expect(gameLogicServiceResult).toHaveBeenCalledWith(mockPlayerChoice, mockComputerChoice);
-      });
-
 
       it('should set the player choice to match the routeParam', function() {
         expect(vm.playerChoice).toEqual(mockPlayerChoice);
       });
 
-      it('should call gameLogicService.updateScore with correct args, on next digest cycle', function() {
-        expect(gameLogicServiceUpdateScore).toHaveBeenCalled();
+      it('should call gameLogicService.getResultAndUpdateScore with correct args, on next digest cycle', function() {
+        expect(gameLogicServiceGetResultAndUpdateScore).toHaveBeenCalledWith(mockPlayerChoice, mockComputerChoice);
+      });
+
+      it('should set vm.result to the return value of gameLogicService.getResultAndUpdateScore', function() {
+        expect(vm.result).toEqual(mockResultValue);
       });
     });
   });
